@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Open_Sans } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
+import { AppRouterCacheProvider } from '@mui/material-nextjs/v13-appRouter';
 
 import "./globals.css";
 
@@ -20,7 +21,9 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en">
         <body className={font.className}>
-          {children}
+          <AppRouterCacheProvider>
+            {children}
+          </AppRouterCacheProvider>
         </body>
       </html>
     </ClerkProvider>
