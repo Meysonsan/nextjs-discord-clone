@@ -4,7 +4,7 @@ interface Server extends Document {
   name: string;
   imageUrl?: string;
   inviteCode: string;
-  profile: Types.ObjectId;
+  profileId: Types.ObjectId;
   members?: Types.ObjectId[];
   channels?: Types.ObjectId[];
   createdAt: Date;
@@ -12,6 +12,11 @@ interface Server extends Document {
 }
 
 const serverSchema = new Schema<Server>({
+  // _id: {
+  //   type: Schema.Types.ObjectId,
+  //   default: Schema.Types.ObjectId,
+  //   required: true,
+  // },
   name: {
     type: String,
     required: true,
@@ -24,7 +29,7 @@ const serverSchema = new Schema<Server>({
     required: true,
     unique: true,
   },
-  profile: {
+  profileId: {
     type: Schema.Types.ObjectId,
     ref: 'Profile',
     required: true,
@@ -45,6 +50,10 @@ const serverSchema = new Schema<Server>({
     type: Date,
     default: Date.now,
   },
+},
+{
+  // timestamps: { createdAt: 'createdAt' },
+  collection: "servers",
 });
 
 serverSchema.index({ profile: 1 });

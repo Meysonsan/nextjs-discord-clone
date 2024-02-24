@@ -71,7 +71,11 @@ const channelSchema = new Schema<ChannelDocument>({
     type: Date,
     default: Date.now,
   },
-});
+},
+{
+    // timestamps: { createdAt: 'createdAt' },
+    collection: "channels",
+  });
 
 // Indexes for efficient queries
 channelSchema.index({ profileId: 1 });

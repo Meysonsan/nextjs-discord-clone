@@ -85,7 +85,11 @@ const memberSchema = new Schema<MemberDocument>({
     type: Date,
     default: Date.now,
   },
-});
+},
+{
+    // timestamps: { createdAt: 'createdAt' },
+    collection: "members",
+  });
 
 // Indexes for efficient queries
 memberSchema.index({ profileId: 1 });

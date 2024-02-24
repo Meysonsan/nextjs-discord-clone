@@ -14,6 +14,11 @@ interface Profile extends Document {
 
 // Schema
 const profileSchema = new Schema<Profile>({
+  // _id: {
+  //   type: Schema.Types.ObjectId,
+  //   default: Schema.Types.ObjectId,
+  //   required: true,
+  // },
   userId: {
     type: String,
     required: true,
@@ -61,6 +66,10 @@ const profileSchema = new Schema<Profile>({
     type: Date,
     default: Date.now,
   },
+},
+{
+  // timestamps: { createdAt: 'createdAt' },
+  collection: "profiles",
 });
 
 // Model

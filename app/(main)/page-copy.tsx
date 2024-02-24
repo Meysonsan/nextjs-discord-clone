@@ -4,7 +4,6 @@ import React from 'react';
 import { Box } from '@mui/material'
 import {
   Experimental_CssVarsProvider as CssVarsProvider,
-  experimental_extendTheme as extendTheme,
   useColorScheme,
 } from '@mui/material/styles';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
@@ -12,26 +11,6 @@ import Brightness7Icon from '@mui/icons-material/Brightness7';
 import { UserButton } from "@clerk/nextjs";
 import IconButton from '@mui/material/IconButton';
 import type {} from '@mui/material/themeCssVarsAugmentation';
-import { pink } from '@mui/material/colors';
-
-const theme = extendTheme({
-  colorSchemes: {
-    light: {
-      palette: {
-        primary: {
-          main: pink[600],
-        },
-      },
-    },
-    dark: {
-      palette: {
-        primary: {
-          main: pink[400],
-        },
-      },
-    },
-  },
-});
 
 const ModeSwitcher = () => {
   const { mode, setMode } = useColorScheme();
@@ -68,14 +47,13 @@ const ModeSwitcher = () => {
       }} color="inherit">
       {mode === 'light' ? <Brightness7Icon /> : <Brightness4Icon />}
     </IconButton>
-    {/* <StyledComponent>asdasdasd</StyledComponent> */}
   </Box>
   );
 };
 
 export default function App() {
   return (
-    <CssVarsProvider theme={theme}>
+    <CssVarsProvider>
       <ModeSwitcher />
     </CssVarsProvider>
   );
